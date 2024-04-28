@@ -41,8 +41,9 @@ func (s *SupplyChainContract) InitLedger(ctx contractapi.TransactionContextInter
 
 	// Initial set of products to populate the ledger
 	products := []Product{
-		{ID: "p1", Name: "Laptop", Status: "Manufactured", Owner: "CompanyA", CreatedAt: timestamp, UpdatedAt: timestamp, Description: "High-end gaming laptop", Category: "Electronics"},
-	}
+		{ID: "p1", Name: "Laptop", Status: "Manufactured", Owner: "CompanyA", CreatedAt: time.Now().Format(time.RFC3339), UpdatedAt: time.Now().Format(time.RFC3339), Description: "High-end gaming laptop", Category: "Electronics"},
+		{ID: "p2", Name: "Smartphone", Status: "Manufactured", Owner: "CompanyB", CreatedAt: time.Now().Format(time.RFC3339), UpdatedAt: time.Now().Format(time.RFC3339), Description: "Latest model smartphone", Category: "Electronics"},
+    }
 
 	for _, product := range products {
 		if err := s.putProduct(ctx, &product); err != nil {
